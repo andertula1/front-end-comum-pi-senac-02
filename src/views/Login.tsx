@@ -2,7 +2,8 @@ import React, { useState } from 'react';
 import useForm from '../hooks/useForm';
 import Snackbar from '../components/Snackbar';
 import api from '../http/api';
-import { useNavigate } from 'react-router-dom';
+import { useNavigate } from 'react-router';
+// import { useNavigate } from 'react-router-dom';
 
 interface SnackbarState {
   message: string;
@@ -25,7 +26,7 @@ export default function Login() {
   const navigate = useNavigate();
 
   const login = async () => {
-    const duration = 10000;
+    const duration = 5000;
 
     if (!validate) {
       return;
@@ -50,7 +51,7 @@ export default function Login() {
         duration,
       });
       setTimeout(() => {
-        navigate('/home');
+        navigate('/admin/home');
       }, duration);
     } catch (error: unknown) {
       const axiosError = error as {
